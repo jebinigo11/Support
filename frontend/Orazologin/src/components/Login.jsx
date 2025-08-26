@@ -19,13 +19,34 @@ export default function Login() {
     localStorage.setItem("orazo-theme", theme);
   }, [theme]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (userId === "admin" && password === "orazo123") {
-      alert("Welcome to Orazo Admin Panel 🚀");
-      setError("");
-    } else setError("Invalid User ID or Password");
-  };
+  // -------------------------
+  // Login handler with backend
+  // -------------------------
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+
+  try {
+    const res = await fetch("http://localhost:8082/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: userId, password }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log("Login success:", data);
+      alert(data.message);  // friendly message from backend
+    } else {
+      const err = await res.text();
+      setError(err);
+    }
+  } catch (err) {
+    setError("Server error. Try again later.");
+    console.error(err);
+  }
+};
+
 
   return (
     <div className="app" data-theme={theme}>
@@ -63,7 +84,7 @@ export default function Login() {
 
             <form onSubmit={handleSubmit} noValidate>
               <label className="input-row">
-                <span className="leading"><FaUserShield/></span>
+                <span className="leading"><FaUserShield /></span>
                 <input
                   type="text"
                   placeholder="User ID"
@@ -74,7 +95,7 @@ export default function Login() {
               </label>
 
               <label className="input-row">
-                <span className="leading"><MdOutlinePassword/></span>
+                <span className="leading"><MdOutlinePassword /></span>
                 <input
                   type={showPw ? "text" : "password"}
                   placeholder="Password"
