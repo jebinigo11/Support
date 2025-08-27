@@ -1,0 +1,43 @@
+/* Professional, legible fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ----- CSS Reset / Full-page base ----- */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ----- Theme Variables (LIGHT defaults) ----- */
+:root{
+  --bg: #0b0f14;        /* page bg behind panels (used on dark only) */
+  --surface: #f5f7fb;   /* page surface */
+  --card: #ffffff;      /* card background */
+  --text: #0f172a;      /* primary text */
+  --muted: #6b7280;     /* muted text */
+  --primary: #215c69;   /* deep teal */
+  --primary-2: #7C3AED; /* electric purple (funky accent) */
+  --accent: #22D3EE;    /* bright cyan accent */
+  --input: #eef1f6;
+  --ring: rgba(124,58,237,.35);
+  --shadow: 0 12px 40px rgba(14, 23, 38, 0.15);
+}
+
+/* DARK overrides (activated by [data-theme="dark"]) */
+.app[data-theme="dark"]{
+  --surface: #0b0f14;
+  --card: #0e1621;
+  --text: #e6edf3;
+  --muted: #9aa4ae;
+  --primary: #22D3EE;     /* cyan becomes primary in dark */
+  --primary-2: #8b5cf6;   /* softer purple */
+  --input: #1b2635;
+  --ring: rgba(34,211,238,.35);
+  --shadow: 0 14px 46px rgba(0,0,0,.45);
+}
+
+/* Utility */
+a { color: var(--primary-2); text-decoration: none; }

@@ -1,0 +1,78 @@
+/* Full page container */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full viewport height */
+  width: 100vw;  /* full viewport width */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Logo */
+.logo {
+  height: 100px;
+  margin-bottom: 1.5rem;
+}
+
+/* Title */
+.login-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Form */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Input fields */
+.login-input {
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-input::placeholder {
+  color: #ccc;
+}
+
+.login-input:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px #00d8ff; /* telecom neon blue glow */
+}
+
+/* Button */
+.login-button {
+  background: #00d8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #003049;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px #00d8ffaa;
+}
+.login-button:hover {
+  background: #0099cc;
+  transform: scale(1.05);
+}
